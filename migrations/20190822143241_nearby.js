@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         table.integer('location_id')
         table.timestamps()
         table.foreign('location_id')
-                .references('location.id')
+                .references('location.reserva_id')
     });
 };
 
