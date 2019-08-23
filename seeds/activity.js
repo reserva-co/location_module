@@ -20,7 +20,7 @@ exports.seed = (knex) => {
       // Inserts seed entries
       var datas = [];
 
-      for(var i = 0; i < 12; i++){
+      for(var i = 0; i < 20; i++){
         for(var j = 1; j < 101; j++){
           datas.push(createActivity(knex, i, j, Math.floor(Math.random()*1000)))
         }
