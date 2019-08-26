@@ -1,5 +1,7 @@
 var faker = require('faker');
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
+const photoAPI = require('../lib/photo_API.js');
+
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -34,8 +36,8 @@ exports.seed = (knex) => {
       var datas = [];
 
       for(var i = 1; i < 101; i++){
-        for(var j = 0; j < 12; j++){
-          datas.push(createActivity(knex, j, i))
+        for(var j = 0; j < 20; j++){
+            datas.push(createActivity(knex, j, i))
         }
       }
       return Promise.all(datas);

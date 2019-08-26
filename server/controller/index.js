@@ -6,7 +6,7 @@ module.exports = {
             if(err){
                 console.log(err)
             }else{
-                res.json(data);
+                res.send(data);
             }
         })
     }

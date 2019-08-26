@@ -1,5 +1,6 @@
 var faker = require('faker');
 const LoremIpsum = require("lorem-ipsum").LoremIpsum;
+const photoAPI = require('../lib/photo_API.js');
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -11,7 +12,6 @@ const lorem = new LoremIpsum({
     min: 4
   }
 });
-
 
 var createNearby = (knex, id, location_id) => {
   return knex('nearby').insert({
@@ -36,10 +36,11 @@ exports.seed = (knex) => {
       var datas = [];
 
       for(var i = 1; i < 101; i++){
-        for(var j = 0; j < 12; j++){
-          datas.push(createNearby(knex, j, i))
+      for(var j = 0; j < 12; j++){
+        datas.push(createNearby(knex, j, i))
         }
       }
+  
       return Promise.all(datas);
     });
 };
