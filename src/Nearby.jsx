@@ -1,14 +1,19 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import NearbyEntry from './NearbyEntry.jsx';
 
+const NearbyCounter = styled.div`
+  text-align: center;
+`;
+
 const Nearby = ({ nearby }) => (
-  <div>
+  <NearbyCounter>
     {nearby.map((n) => (
       <NearbyEntry nearby={n} key={n.id} />
     ))}
-  </div>
+  </NearbyCounter>
 );
 
 Nearby.propTypes = {

@@ -1,24 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const NearbyEntryCounter = styled.div`
+  display: inline-block
+  width: 400px;
+  height: 300px;
+`;
+
+const Img = styled.img`
+  padding: 10px;
+  background: lightgray;
+`;
 
 const NearbyEntry = ({ nearby }) => (
-  <ul>
-    <img src={nearby.image} height="200" width="200" alt="" />
-    <li>
-      {nearby.house_type}
-      {' '}
+  <NearbyEntryCounter id={nearby.id}>
+    <Img src={nearby.image} height="100%" width="100%" alt="" />
+    <br />
+    {nearby.house_type}
+    {' '}
             .
-      {' '}
-      {nearby.location}
-    </li>
-    <li>{nearby.title}</li>
-    <li>
+    {' '}
+    {nearby.location}
+    <br />
+    {nearby.title}
+    <br />
             $
-      {nearby.price}
+    {nearby.price}
             /night
-    </li>
-    <li>{nearby.rate}</li>
-  </ul>
+    <br />
+    {nearby.rate}
+  </NearbyEntryCounter>
 );
 
 NearbyEntry.propTypes = {
