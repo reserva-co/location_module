@@ -1,30 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class NearbyEntry extends React.Component{
-    constructor(props){
-        super(props)
-        this.state = {
-            picNum:0,
-        }
-    }
+const NearbyEntry = ({ nearby }) => (
+  <ul>
+    <img src={nearby.image} height="200" width="200" alt="" />
+    <li>
+      {nearby.house_type}
+      {' '}
+            .
+      {' '}
+      {nearby.location}
+    </li>
+    <li>{nearby.title}</li>
+    <li>
+            $
+      {nearby.price}
+            /night
+    </li>
+    <li>{nearby.rate}</li>
+  </ul>
+);
 
-    componentDidMount(){
-        let num = Math.floor(Math.random()*101+1);
-        this.setState({
-            picNum:num,
-        })
-    }
+NearbyEntry.propTypes = {
+  nearby: PropTypes.objectOf.isRequired,
+};
 
-    render(){
-        return(
-            <ul>
-                <li><img src={`https://feclocation.s3-us-west-1.amazonaws.com/nearby/${this.state.picNum}.jpg`} height="150" width="150" /></li>
-                <li>{this.props.nearby.house_type}</li>
-                <li>{this.props.nearby.location}</li>
-                <li>{this.props.nearby.title}</li>
-                <li>{this.props.nearby.price}</li>
-                <li>{this.props.nearby.rate}</li>
-            </ul>
-        )
-    }
-}
+export default NearbyEntry;

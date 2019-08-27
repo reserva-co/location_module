@@ -1,46 +1,44 @@
-var faker = require('faker');
-const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-const photoAPI = require('../lib/photo_API.js');
+import { address, commerce } from 'faker';
+import { LoremIpsum } from 'lorem-ipsum';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 8,
-    min: 4
+    min: 4,
   },
   wordsPerSentence: {
-    max: 16,
-    min: 4
-  }
+    max: 8,
+    min: 3,
+  },
 });
 
-var createNearby = (knex, id, location_id) => {
-  return knex('nearby').insert({
-    id,
-		image: faker.image.imageUrl(),
-		house_type: 'ENTIRE HOUSE',
-		location: faker.address.city(),
-		title: lorem.generateSentences(1),
-		price: faker.commerce.price(),
-		rate: Math.floor(Math.random()*1000),
-		location_id, 
-    created_at: new Date(),
-    updated_at: new Date()
-  })
-}
 
-exports.seed = (knex) => {
-  // Deletes ALL existing entries
+const createNearby = (knex, id, locationId, num) => knex('nearby').insert({
+  id,
+  image: `https://feclocation.s3-us-west-1.amazonaws.com/nearby/${num}.jpg`,
+  house_type: 'ENTIRE HOUSE',
+  location: address.city(),
+  title: lorem.generateSentences(1),
+  price: commerce.price(),
+  rate: Math.floor(Math.random() * 1000),
+  location_id: locationId,
+  created_at: new Date(),
+  updated_at: new Date(),
+});
+
+export default function seed(knex) {
   return knex('nearby').del()
     .then(() => {
       // Inserts seed entries
-      var datas = [];
+      const datas = [];
 
-      for(var i = 1; i < 101; i++){
-      for(var j = 0; j < 12; j++){
-        datas.push(createNearby(knex, j, i))
+      for (let i = 1; i < 101; i += 1) {
+        for (let j = 0; j < 12; j += 1) {
+          const num = Math.floor(Math.random() * 99 + 1);
+          datas.push(createNearby(knex, j, i, num));
         }
       }
-  
+
       return Promise.all(datas);
     });
-};
+}

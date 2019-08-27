@@ -1,18 +1,18 @@
+/* eslint-disable import/extensions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import NearbyEntry from './NearbyEntry.jsx';
 
-export default class Nearby extends React.Component{
-    constructor(props){
-        super(props)
-    }
+const Nearby = ({ nearby }) => (
+  <div>
+    {nearby.map((n) => (
+      <NearbyEntry nearby={n} key={n.id} />
+    ))}
+  </div>
+);
 
-    render(){
-        return(
-            <div>
-                {this.props.nearby.map((n,i) => (
-                    <NearbyEntry nearby={n} key={i}/>
-                ))}
-            </div>
-        )
-    }
-}
+Nearby.propTypes = {
+  nearby: PropTypes.arrayOf.isRequired,
+};
+
+export default Nearby;
