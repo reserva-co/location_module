@@ -54,7 +54,7 @@ class Nearby extends React.Component {
         this.setState({
           alltheHouse: datas.data[0],
           showHouse: datas.data[0][0],
-        }, () => { console.log(this.state); });
+        });
       })
       .catch((err) => console.log(err));
   }
