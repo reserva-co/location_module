@@ -1,8 +1,8 @@
+/* eslint-disable react/no-unused-prop-types */
 /* eslint-disable import/extensions */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import axios from 'axios';
 import NearbyEntry from './NearbyEntry.jsx';
 
 const NearbyCounter = styled.div`
@@ -13,18 +13,6 @@ const Slider = styled.div`
   position: relative;
   max-width: 880px;
   margin: 0 auto;
-
-  &:after {
-    content:'';
-    padding: 10px;
-    diplay: block;
-    width: 100%;
-    height: 200px;
-    outline: 5px solid black;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 `;
 
 const SliderWrapper = styled.div`
@@ -36,27 +24,13 @@ const SliderWrapper = styled.div`
 class Nearby extends React.Component {
   constructor(props) {
     super(props);
+    const { alltheHouse, showHouse } = this.props;
     this.state = {
-      alltheHouse: [],
-      showHouse: null,
+      alltheHouse,
+      showHouse,
     };
-    this.getOne = this.getOne.bind(this);
-  }
-
-  componentDidMount() {
-    this.getOne();
-  }
-
-  getOne() {
-    axios.get('/api/location/1')
-      .then((datas) => {
-        console.log(datas);
-        this.setState({
-          alltheHouse: datas.data[0],
-          showHouse: datas.data[0][0],
-        });
-      })
-      .catch((err) => console.log(err));
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
   }
 
   next() {
@@ -77,13 +51,12 @@ class Nearby extends React.Component {
 
   render() {
     const { showHouse, alltheHouse } = this.state;
-
     return (
       <div>
-        {showHouse !== null
-        && (
+        {showHouse !== null && (
         <div>
           <button
+            className="next"
             onClick={() => { this.next(); }}
             disabled={showHouse.id === alltheHouse.length - 3}
             type="button"
@@ -93,6 +66,7 @@ Next
           </button>
 
           <button
+            className="prev"
             onClick={() => { this.prev(); }}
             disabled={showHouse.id === 0}
             type="button"

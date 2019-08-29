@@ -8,11 +8,14 @@
   "engines": {
     "node": ">=6.13.0"
   },
+  "jest": {
+    "setupFilesAfterEnv": ["<rootDir>spec/setUp.js"]
+  },
   "scripts": {
     "build": "npx webpack --watch",
     "start": "nodemon server.js",
     "seeds": "npx knex seed:run",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "axios": "^0.19.0",
