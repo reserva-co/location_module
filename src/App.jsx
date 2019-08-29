@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Nearby from './Nearby.jsx';
-// import Activity from './Activity.jsx';
+import Activity from './Activity.jsx';
 
 const AppCounter = styled.div`
   text-align: center;
@@ -21,11 +21,23 @@ const MoreplaceText = styled.h2`
   text-align: left;
 `;
 
+const MoreActivities = styled.div`
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+`;
+
+const MoreActivitiesext = styled.h2`
+  text-align: left;
+  margin-top: 350px;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       alltheHouse: [],
+      activities: [],
     };
     this.getOne = this.getOne.bind(this);
   }
@@ -39,13 +51,14 @@ class App extends React.Component {
       .then((datas) => {
         this.setState({
           alltheHouse: datas.data[0],
+          activities: datas.data[1],
         });
       })
       .catch((err) => (err));
   }
 
   render() {
-    const { alltheHouse } = this.state;
+    const { alltheHouse, activities } = this.state;
     return (
       <AppCounter>
         {alltheHouse.length > 0 && (
@@ -54,8 +67,10 @@ class App extends React.Component {
             <MoreplaceText>More place to stay</MoreplaceText>
           </Moreplace>
           <Nearby alltheHouse={alltheHouse} />
-          {/* <h3>Things to do nearby</h3> */}
-          {/* <Activity activity={activity} /> */}
+          <MoreActivities>
+            <MoreActivitiesext>Things to do nearby</MoreActivitiesext>
+          </MoreActivities>
+          <Activity activities={activities} />
         </div>
         )}
       </AppCounter>

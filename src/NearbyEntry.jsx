@@ -32,7 +32,7 @@ const Other = styled.div`
 `;
 
 const Heart = styled.span`
-  position: fixed;
+  position: absolute;
   font-size: 28px;
   color: white;
   margin-left: 300px;
