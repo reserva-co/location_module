@@ -24,7 +24,6 @@ describe('<App />', () => {
   it('Nearby state should have alltheHouse and showHouse property', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.state()).toHaveProperty('alltheHouse');
-    expect(wrapper.state()).toHaveProperty('showHouse');
   });
   it('has text More place to stay', () => {
     const wrapper = shallow(<div>
