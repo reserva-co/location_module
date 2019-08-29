@@ -11,6 +11,16 @@ const AppCounter = styled.div`
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 `;
 
+const Moreplace = styled.div`
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+`;
+
+const MoreplaceText = styled.h2`
+  text-align: left;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +50,9 @@ class App extends React.Component {
       <AppCounter>
         {alltheHouse.length > 0 && (
         <div>
-          <h3>More place to stay</h3>
+          <Moreplace>
+            <MoreplaceText>More place to stay</MoreplaceText>
+          </Moreplace>
           <Nearby alltheHouse={alltheHouse} />
           {/* <h3>Things to do nearby</h3> */}
           {/* <Activity activity={activity} /> */}

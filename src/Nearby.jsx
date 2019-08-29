@@ -24,11 +24,11 @@ const SliderWrapper = styled.div`
 const ArrowRight = styled.div`
   position: absolute;
   top: 58%;
-  width: 3vmin;
-  height: 3vmin;
+  width: 2vmin;
+  height: 2vmin;
   background: transparent;
-  border-top: 1vmin solid black;
-  border-right: 1vmin solid black;
+  border-top: 0.5vmin solid black;
+  border-right: 0.5vmin solid black;
   box-shadow: 0 0 0 lightgray;
   transition: all 200ms ease;
   left: -25px;
@@ -37,15 +37,15 @@ const ArrowRight = styled.div`
 
 const Arrowleft = styled.div`
   position: absolute;
-  top: 58%;
-  width: 3vmin;
-  height: 3vmin;
+  top: 54%;
+  width: 2vmin;
+  height: 2vmin;
   background: transparent;
-  border-top: 1vmin solid black;
-  border-right: 1vmin solid black;
+  border-top: 0.5vmin solid black;
+  border-right: 0.5vmin solid black;
   box-shadow: 0 0 0 lightgray;
   transition: all 200ms ease;
-  right: -25px;
+  right: -7px;
   transform: translate3d(0,-50%,0) rotate(45deg);
 `;
 
@@ -103,7 +103,7 @@ class Nearby extends React.Component {
                 {showHouse.map((n) => (
                   <NearbyEntry nearby={n} key={n.id} />
                 ))}
-                {showHouse[0].id !== 0 && (
+                {showHouse[0].id - 1 >= 0 && (
                 <ArrowRight onClick={this.prev} />
                 )}
               </SliderWrapper>
