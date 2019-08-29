@@ -16,7 +16,6 @@ class App extends React.Component {
     super(props);
     this.state = {
       alltheHouse: [],
-      showHouse: null,
     };
     this.getOne = this.getOne.bind(this);
   }
@@ -30,20 +29,19 @@ class App extends React.Component {
       .then((datas) => {
         this.setState({
           alltheHouse: datas.data[0],
-          showHouse: datas.data[0][0],
         });
       })
       .catch((err) => (err));
   }
 
   render() {
-    const { alltheHouse, showHouse } = this.state;
+    const { alltheHouse } = this.state;
     return (
       <AppCounter>
-        {showHouse !== null && (
+        {alltheHouse.length > 0 && (
         <div>
           <h3>More place to stay</h3>
-          <Nearby alltheHouse={alltheHouse} showHouse={showHouse} />
+          <Nearby alltheHouse={alltheHouse} />
           {/* <h3>Things to do nearby</h3> */}
           {/* <Activity activity={activity} /> */}
         </div>

@@ -19,77 +19,96 @@ const Slider = styled.div`
 const SliderWrapper = styled.div`
   display: flex;
   position: absolute;
-  transition: transform 300ms;
 `;
 
+const ArrowRight = styled.div`
+  position: absolute;
+  top: 58%;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid black;
+  border-right: 1vmin solid black;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
+  left: -25px;
+  transform: translate3d(0,-50%,0) rotate(-135deg);
+`;
+
+const Arrowleft = styled.div`
+  position: absolute;
+  top: 58%;
+  width: 3vmin;
+  height: 3vmin;
+  background: transparent;
+  border-top: 1vmin solid black;
+  border-right: 1vmin solid black;
+  box-shadow: 0 0 0 lightgray;
+  transition: all 200ms ease;
+  right: -25px;
+  transform: translate3d(0,-50%,0) rotate(45deg);
+`;
 
 class Nearby extends React.Component {
   constructor(props) {
     super(props);
-    const { alltheHouse, showHouse } = this.props;
+    const { alltheHouse } = this.props;
     this.state = {
       alltheHouse,
-      showHouse,
+      showHouse: [],
     };
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
   }
 
+  componentDidMount() {
+    const { alltheHouse } = this.state;
+    if (alltheHouse.length > 0) {
+      const arr = alltheHouse.slice(0, 3);
+      this.setState({
+        showHouse: arr,
+      });
+    }
+  }
+
   next() {
     const { showHouse, alltheHouse } = this.state;
-    const newIdx = showHouse.id + 1;
+    const newIdx = showHouse[0].id + 1;
+    const arr = alltheHouse.slice(newIdx, newIdx + 3);
     this.setState({
-      showHouse: alltheHouse[newIdx],
+      showHouse: arr,
     });
   }
 
   prev() {
     const { showHouse, alltheHouse } = this.state;
-    const preIdx = showHouse.id - 1;
+    const preIdx = showHouse[showHouse.length - 1].id - 1;
+    const arr = alltheHouse.slice(preIdx - 2, preIdx + 1);
     this.setState({
-      showHouse: alltheHouse[preIdx],
+      showHouse: arr,
     });
   }
 
   render() {
-    const { showHouse, alltheHouse } = this.state;
+    const { alltheHouse, showHouse } = this.state;
     return (
       <div>
-        {showHouse !== null && (
-        <div>
-          <button
-            className="next"
-            onClick={() => { this.next(); }}
-            disabled={showHouse.id === alltheHouse.length - 3}
-            type="button"
-          >
-Next
-
-          </button>
-
-          <button
-            className="prev"
-            onClick={() => { this.prev(); }}
-            disabled={showHouse.id === 0}
-            type="button"
-          >
-Prev
-
-          </button>
+        {showHouse.length > 0 && (
           <NearbyCounter>
             <Slider>
-              <SliderWrapper
-                style={{
-                  transform: `translateX(-${showHouse.id * (100 / alltheHouse.length)}%)`,
-                }}
-              >
-                {alltheHouse.map((n) => (
+              <SliderWrapper>
+                {showHouse[0].id !== alltheHouse.length - 3 && (
+                <Arrowleft onClick={this.next} />
+                )}
+                {showHouse.map((n) => (
                   <NearbyEntry nearby={n} key={n.id} />
                 ))}
+                {showHouse[0].id !== 0 && (
+                <ArrowRight onClick={this.prev} />
+                )}
               </SliderWrapper>
             </Slider>
           </NearbyCounter>
-        </div>
         )}
       </div>
     );
@@ -98,7 +117,6 @@ Prev
 
 Nearby.propTypes = {
   alltheHouse: PropTypes.array.isRequired,
-  showHouse: PropTypes.object.isRequired,
 };
 
 export default Nearby;

@@ -20,6 +20,7 @@ const createActivity = (knex, id, locationId, num) => knex('activity').insert({
   activity: lorem.generateSentences(1),
   price: faker.commerce.price(),
   rate: Math.floor(Math.random() * 1000),
+  star: (Math.random() * 5).toFixed(2),
   location_id: locationId,
   created_at: new Date(),
   updated_at: new Date(),

@@ -11,8 +11,6 @@ const NearbyEntryCounter = styled.div`
 `;
 
 const Img = styled.img`
-  padding: 10px;
-  background: lightgray;
 `;
 
 const NearbyEntry = ({ nearby }) => (
@@ -32,6 +30,8 @@ const NearbyEntry = ({ nearby }) => (
             /night
     <br />
     {nearby.rate}
+    {' '}
+    {nearby.star}
   </NearbyEntryCounter>
 );
 
