@@ -98,13 +98,13 @@ class Nearby extends React.Component {
             <Slider>
               <SliderWrapper>
                 {showHouse[0].id !== alltheHouse.length - 3 && (
-                <Arrowleft onClick={this.next} />
+                <Arrowleft id="left" onClick={this.next} />
                 )}
                 {showHouse.map((n) => (
                   <NearbyEntry nearby={n} key={n.id} />
                 ))}
                 {showHouse[0].id - 1 >= 0 && (
-                <ArrowRight onClick={this.prev} />
+                <ArrowRight id="right" onClick={this.prev} />
                 )}
               </SliderWrapper>
             </Slider>

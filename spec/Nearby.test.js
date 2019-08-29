@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { create } from 'react-test-renderer';
 import Nearby from '../src/Nearby.jsx';
 import NearbyEntry from '../src/NearbyEntry.jsx';
@@ -178,7 +178,13 @@ describe('<Nearby />', () => {
   it('renders one <NearbyEntry /> components', () => {
     expect(wrapper.find(NearbyEntry).first()).toHaveLength(1);
   });
-  it('renders 2 button', () => {
+  it('Test `componentDidMount`', () => {
+    const didMount = jest.fn();
+    Nearby.prototype.componentDidMount = didMount;
+    mount(<Nearby />);
+    expect(didMount).toHaveBeenCalled();
+  });
+  xit('renders 2 button', () => {
     expect(wrapper.find('button')).toHaveLength(2);
   });
   it('should has props', () => {
@@ -186,9 +192,9 @@ describe('<Nearby />', () => {
     expect(instance.props).toBeDefined();
   });
   it('should change index on click', () => {
-    wrapper.find('button.next').simulate('click');
-    expect(wrapper.state('showHouse').id).toEqual(1);
-    wrapper.find('button.prev').simulate('click');
-    expect(wrapper.state('showHouse').id).toEqual(0);
+    wrapper.find('#left').simulate('click');
+    expect(wrapper.state('showHouse')[0].id).toEqual(1);
+    wrapper.find('#right').simulate('click');
+    expect(wrapper.state('showHouse')[0].id).toEqual(0);
   });
 });
