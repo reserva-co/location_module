@@ -16,7 +16,7 @@ const lorem = new LoremIpsum({
 const createActivity = (knex, id, locationId, num) => knex('activity').insert({
   id,
   image: `https://feclocation.s3-us-west-1.amazonaws.com/activity/${num}.jpg`,
-  activity: lorem.generateWords(Math.floor(Math.random() * 5 + 1)),
+  activity: lorem.generateWords(Math.floor(Math.random() * 5 + 2)),
   price: Math.floor(Math.random() * 1000 + 1),
   rate: Math.floor(Math.random() * 1000),
   star: (Math.random() * 5).toFixed(2),

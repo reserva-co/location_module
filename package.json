@@ -9,7 +9,9 @@
     "node": ">=6.13.0"
   },
   "jest": {
-    "setupFilesAfterEnv": ["<rootDir>spec/setUp.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>spec/setUp.js"
+    ]
   },
   "scripts": {
     "build": "npx webpack --watch",
@@ -32,6 +34,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-ratings-declarative": "^3.4.1",
     "sinon": "^7.4.1",
     "styled-components": "^4.3.2"
   },
