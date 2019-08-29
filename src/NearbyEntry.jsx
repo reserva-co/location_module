@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -14,8 +15,8 @@ const Img = styled.img`
   background: lightgray;
 `;
 
-const NearbyEntry = ({ nearby, key }) => (
-  <NearbyEntryCounter id={key}>
+const NearbyEntry = ({ nearby }) => (
+  <NearbyEntryCounter id={nearby.id}>
     <Img src={nearby.image} height="100%" width="100%" alt="" />
     <br />
     {nearby.house_type}
@@ -35,8 +36,7 @@ const NearbyEntry = ({ nearby, key }) => (
 );
 
 NearbyEntry.propTypes = {
-  nearby: PropTypes.objectOf.isRequired,
-  key: PropTypes.number.isRequired,
+  nearby: PropTypes.object.isRequired,
 };
 
 export default NearbyEntry;
