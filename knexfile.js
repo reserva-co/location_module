@@ -6,7 +6,7 @@ module.exports = {
     client: 'mysql',
     connection: {
       database: 'fec',
-      user:     'root'
+      user:     'root',
     }
   },
 
@@ -14,30 +14,30 @@ module.exports = {
     client: 'mysql',
     connection: {
       database: 'fec',
-      user:     'root'
+      user:     'root',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      tableName: 'knex_migrations',
+    },
   },
 
   production: {
     client: 'mysql',
     connection: {
       database: 'fec',
-      user:     'root'
+      user:     'root',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
+      tableName: 'knex_migrations',
+    },
+  },
 
 };

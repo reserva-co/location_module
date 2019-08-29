@@ -41,13 +41,12 @@ const datas = {
   ],
 };
 
-export default function get(url) {
+export default function getOne(id) {
   return new Promise((resolve, reject) => {
-    const locationID = parseInt(url.substr('/api/location/'.length), 10);
-    process.nextTick(() => (datas.location_id === locationID
+    process.nextTick(() => (datas.location_id === id
       ? resolve(datas.nearby)
       : reject({
-        error: `Nearby with ${locationID} not found.`,
+        error: `Nearby with ${id} not found.`,
       })));
   });
 }
