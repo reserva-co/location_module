@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable import/extensions */
 import React from 'react';
@@ -18,6 +19,7 @@ const Slider = styled.div`
 const SliderWrapper = styled.div`
   display: flex;
   position: absolute;
+  transition: transform 300ms;
 `;
 
 
@@ -95,8 +97,8 @@ Prev
 }
 
 Nearby.propTypes = {
-  alltheHouse: PropTypes.arrayOf.isRequired,
-  showHouse: PropTypes.objectOf.isRequired,
+  alltheHouse: PropTypes.array.isRequired,
+  showHouse: PropTypes.object.isRequired,
 };
 
 export default Nearby;
