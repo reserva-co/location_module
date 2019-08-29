@@ -27,7 +27,7 @@ const MoreActivities = styled.div`
   margin: 0 auto;
 `;
 
-const MoreActivitiesext = styled.h2`
+const MoreActivitiestext = styled.h2`
   text-align: left;
   margin-top: 350px;
 `;
@@ -68,7 +68,7 @@ class App extends React.Component {
           </Moreplace>
           <Nearby alltheHouse={alltheHouse} />
           <MoreActivities>
-            <MoreActivitiesext>Things to do nearby</MoreActivitiesext>
+            <MoreActivitiestext>Things to do nearby</MoreActivitiestext>
           </MoreActivities>
           <Activity activities={activities} />
         </div>
