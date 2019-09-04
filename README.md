@@ -24,7 +24,6 @@ npm run db
 npm run seeds
 npm run build
 npm start
-
 ```
 
 ## Requirements
