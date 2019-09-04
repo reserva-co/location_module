@@ -7,10 +7,9 @@ exports.up = function(knex, Promise) {
         table.string('title')
         table.integer('price')
         table.string('rate')
+        table.integer('star')
         table.integer('location_id')
         table.timestamps()
-        table.foreign('location_id')
-                .references('location.reserva_id')
     });
 };
 

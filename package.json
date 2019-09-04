@@ -15,6 +15,7 @@
     ]
   },
   "scripts": {
+    "db": "knex migrate:latest",
     "build": "npx webpack --watch",
     "start": "nodemon server.js",
     "seeds": "npx knex seed:run",
