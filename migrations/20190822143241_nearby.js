@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('nearby', table => {
-        table.increments('id')
+        table.integer('id')
         table.string('image')
         table.string('house_type')
         table.string('location')

@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('activity', table => {
-        table.increments('id')
+        table.integer('id')
         table.string('image')
         table.string('title')
         table.string('activity')
