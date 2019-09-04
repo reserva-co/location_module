@@ -43,11 +43,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getOne();
+    const { id } = this.props;
+    this.getOne(id);
   }
 
   getOne(id = 1) {
-    axios.get(`/api/location/${id}`)
+    axios.get(`http://localhost:3002/api/location/${id}`)
       .then((datas) => {
         this.setState({
           alltheHouse: datas.data[0],

@@ -12,26 +12,26 @@ const NearbyEntryCounter = styled.div`
   height: 200px;
 `;
 
-const Img = styled.img`
+const NearbyImg = styled.img`
 `;
 
-const FirstLine = styled.div`
+const NearbyFirstLine = styled.div`
   font-size: 12px;
   color: gray;
   font-weight: bold;
 `;
 
-const Title = styled.div`
+const NearbyTitle = styled.div`
   font-size: 18px;
   font-weight: bold;
 `;
 
-const Other = styled.div`
+const NearbyOther = styled.div`
   font-size: 12px;
   color: gray;
 `;
 
-const Heart = styled.span`
+const NearbyHeart = styled.span`
   position: absolute;
   font-size: 28px;
   color: white;
@@ -40,19 +40,19 @@ const Heart = styled.span`
 
 const NearbyEntry = ({ nearby }) => (
   <NearbyEntryCounter id={nearby.id}>
-    <Heart>&#9825;</Heart>
-    <Img src={nearby.image} height="95%" width="95%" alt="" />
-    <FirstLine>
+    <NearbyHeart>&#9825;</NearbyHeart>
+    <NearbyImg src={nearby.image} height="95%" width="95%" alt="" />
+    <NearbyFirstLine>
       {nearby.house_type}
       {' '}
               .
       {' '}
       {nearby.location}
-    </FirstLine>
-    <Title>
+    </NearbyFirstLine>
+    <NearbyTitle>
       {nearby.title}
-    </Title>
-    <Other>
+    </NearbyTitle>
+    <NearbyOther>
               $
       {nearby.price}
               /night
@@ -70,7 +70,7 @@ const NearbyEntry = ({ nearby }) => (
       </Ratings>
       {' '}
       {nearby.rate}
-    </Other>
+    </NearbyOther>
   </NearbyEntryCounter>
 );
 
