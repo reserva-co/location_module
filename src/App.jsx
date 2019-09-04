@@ -50,7 +50,6 @@ class App extends React.Component {
   getOne(id = 1) {
     axios.get(`http://localhost:3002/api/location/${id}`)
       .then((datas) => {
-        console.log(datas);
         this.setState({
           alltheHouse: datas.data[0],
           activities: datas.data[1],
