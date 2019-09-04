@@ -20,6 +20,7 @@
 > Some usage instructions
 ```
 mysql -uroot < server/schema.sql
+npm i
 npm run db
 npm run seeds
 npm run build
