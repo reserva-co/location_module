@@ -1,7 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Ratings from 'react-ratings-declarative';
 
 const ActivityEntryCounter = styled.div`

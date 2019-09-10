@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable import/extensions */
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import Nearby from './Nearby.jsx';
 import Activity from './Activity.jsx';
@@ -48,7 +47,7 @@ class App extends React.Component {
   }
 
   getOne(id = 1) {
-    axios.get(`http://localhost:3002/api/location/${id}`)
+    axios.get(`http://54.183.177.3:3002/api/location/${id}`)
       .then((datas) => {
         this.setState({
           alltheHouse: datas.data[0],

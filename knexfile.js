@@ -5,16 +5,18 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
+      host: 'database',
       database: 'fec',
-      user:     'root',
+      user: 'root',
     }
   },
 
   staging: {
     client: 'mysql',
     connection: {
+      host: 'database',
       database: 'fec',
-      user:     'root',
+      user: 'root',
     },
     pool: {
       min: 2,
@@ -28,8 +30,9 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
+      host: 'database',
       database: 'fec',
-      user:     'root',
+      user: 'root',
     },
     pool: {
       min: 2,

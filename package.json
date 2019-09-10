@@ -5,7 +5,6 @@
   "author": "",
   "license": "",
   "private": true,
-  "proxy": "http://localhost:3000/",
   "engines": {
     "node": ">=6.13.0"
   },
@@ -15,10 +14,9 @@
     ]
   },
   "scripts": {
-    "db": "knex migrate:latest",
+    "db": "knex migrate:latest && npx knex seed:run",
     "build": "npx webpack --watch",
     "start": "nodemon server.js",
-    "seeds": "npx knex seed:run",
     "test": "jest --watchAll"
   },
   "dependencies": {
@@ -51,13 +49,12 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.2.2",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.8"
   }
 }
